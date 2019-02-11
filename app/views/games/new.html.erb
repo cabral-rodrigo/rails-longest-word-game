@@ -1,0 +1,17 @@
+<div id="container">
+  <h1>New game</h1>
+
+  <ul class="list-inline">
+    <% @grid.each do |x| %>
+    <li><%= x %></li>
+    <% end %>
+  </ul>
+
+  <form action="/score" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input id="input" type="text" name="word" placeholder="What is the longest word you can find?">
+     <input id="letter" name="letters" value="<%= @grid.join("") %>" type="hidden" />
+     <input id="letter" name="timestart" value="<%= @time_start %>" type="hidden" />
+    <input id="btn" type="submit" value="play">
+  </form>
+</div>
